@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 15% 5%;
+    --foreground: 40 15% 93%;
+
+    --card: 220 12% 9%;
+    --card-foreground: 40 15% 93%;
+
+    --popover: 220 12% 9%;
+    --popover-foreground: 40 15% 93%;
+
+    --primary: 36 65% 50%;
+    --primary-foreground: 220 15% 5%;
+
+    --secondary: 220 10% 13%;
+    --secondary-foreground: 40 15% 80%;
+
+    --muted: 220 8% 18%;
+    --muted-foreground: 220 8% 50%;
+
+    --accent: 36 65% 50%;
+    --accent-foreground: 220 15% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 8% 16%;
+    --input: 220 8% 16%;
+    --ring: 36 65% 50%;
+
+    --radius: 1rem;
+
+    --glass: 220 12% 9%;
+    --glass-border: 220 8% 20%;
+
+    --sidebar-background: 220 15% 5%;
+    --sidebar-foreground: 40 15% 93%;
+    --sidebar-primary: 36 65% 50%;
+    --sidebar-primary-foreground: 220 15% 5%;
+    --sidebar-accent: 220 10% 13%;
+    --sidebar-accent-foreground: 40 15% 93%;
+    --sidebar-border: 220 8% 16%;
+    --sidebar-ring: 36 65% 50%;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/50 backdrop-blur-2xl border border-border/40 rounded-3xl shadow-xl shadow-background/50;
+  }
+  .glass-card-hover {
+    @apply glass-card hover:border-primary/25 hover:bg-card/70 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1;
+  }
+  .glass-header {
+    @apply bg-background/70 backdrop-blur-2xl border border-border/20 shadow-lg shadow-background/50;
+  }
+  .section-badge {
+    @apply inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-primary/10 border border-primary/15 font-body text-[11px] tracking-[0.3em] uppercase text-primary font-medium;
+  }
+  .btn-primary {
+    @apply px-8 py-4 bg-primary text-primary-foreground font-body text-[11px] tracking-[0.2em] uppercase rounded-full hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-300 font-semibold;
+  }
+  .btn-outline {
+    @apply px-8 py-4 border border-foreground/15 text-foreground font-body text-[11px] tracking-[0.2em] uppercase rounded-full hover:border-primary/50 hover:text-primary hover:bg-primary/5 hover:-translate-y-0.5 transition-all duration-300 font-medium;
+  }
+  .section-divider {
+    @apply w-16 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent mx-auto;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+::selection {
+  background: hsl(var(--primary) / 0.3);
+  color: hsl(var(--foreground));
+}
